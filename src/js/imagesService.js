@@ -9,21 +9,25 @@ export default class ImagesApiService {
     this.page = 1;
   }
 
-  getImages() {
-    const searchParams = new URLSearchParams({
-      key: API_KEY,
-      q: this.searchQuery,
-      image_type: 'photo',
-      orientation: 'horizontal',
-      safesearch: true,
-      per_page: 40,
-      page: this.page,
-    });
+  async getImages() {
+    try {
+      const searchParams = new URLSearchParams({
+        key: API_KEY,
+        q: this.searchQuery,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: true,
+        per_page: 40,
+        page: this.page,
+      });
 
-    return axios.get(`${BASE_URL}?${searchParams}`).then(({ data }) => {
+      const response = await axios.get(`${BASE_URL}?${searchParams}`);
       this.incrementPage();
-      return data;
-    });
+
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   incrementPage() {

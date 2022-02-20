@@ -2,6 +2,7 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   line-height: 1.4;
+  background-color: lightgoldenrodyellow;
 }
 
 img {
@@ -17,10 +18,28 @@ button {
 .search-form {
   text-align: center;
   padding: 5px;
-  background-color: blue;
+  background-color: teal;
+}
+
+.search-form > button {
+  height: 32px;
+  width: 80px;
+  border-radius: 4px;
+  border: none;
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+  transition: all 250ms ease-in-out;
+}
+
+.search-form > button:hover,
+.search-form > button:focus {
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  color: teal;
 }
 
 input {
+  position: relative;
   padding: 5px;
   outline: none;
   border-radius: 4px;
@@ -60,4 +79,10 @@ input:focus {
   background-color: rgb(0, 174, 255);
   border: none;
   border-radius: 4px;
+}
+
+.load-more:hover,
+.load-more:focus {
+  background-color: rgb(4, 137, 199);
+  transition: background-color 250ms;
 }
