@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '25677336-52df653f6807abbcb11bbd90f';
@@ -21,8 +22,10 @@ export default class ImagesApiService {
         page: this.page,
       });
 
+      Loading.pulse();
       const response = await axios.get(`${BASE_URL}?${searchParams}`);
       this.incrementPage();
+      Loading.remove();
 
       return response.data;
     } catch (error) {

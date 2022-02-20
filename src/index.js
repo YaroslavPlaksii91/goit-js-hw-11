@@ -32,6 +32,7 @@ async function onFormSubmit(evt) {
 
     if (hits.length !== 0) {
       Notify.success(`Hooray! We found ${totalHits} images.`);
+      observerTarget.style.display = 'block';
     }
 
     renderMarkup(hits);
@@ -54,6 +55,7 @@ async function onScroll(entries) {
 
         if (imagesApiService.page - 1 > maxPage) {
           Notify.info("We're sorry, but you've reached the end of search results.");
+          observerTarget.style.display = 'none';
         }
       }
     } catch (error) {
